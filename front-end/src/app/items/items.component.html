@@ -1,0 +1,23 @@
+<input class="todo-input"  [(ngModel)]="newItem">
+<button class="todo-input"  [appHover]="color" (click)="saveItem()">Save</button>
+
+
+
+  <ul>
+  	<div class="todo-item">
+  		<div class="todo-item-left">
+  			<div class="todo-item-label">
+  				<li *ngFor="let todo of items"> <h4>{{ todo.item }} <button [appHover]="color" (click)="openModal('custom-modal-1', todo._id, todo.item)">Edit</button><button [appHover]="color" defaultColor="red" class="remove-item" (click)="deleteItem(todo.item, todo._id)">&times;</button></h4></li>
+  			</div>
+  		</div>
+  	</div>
+  </ul>
+
+
+<update-modal id="custom-modal-1">
+	<p>Edit Item: <input type="text" [(ngModel)]="bodyText" /></p>
+		<button [appHover]="color" (click)="updateModal('custom-modal-1');">Save</button>
+		<button [appHover]="color" defaultColor="red" (click)="cancelModal('custom-modal-1');">Cancel</button>
+</update-modal>
+
+
